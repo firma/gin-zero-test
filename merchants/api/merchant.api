@@ -1,0 +1,14 @@
+type (
+	MerchantReq {
+		Id string `path:"id"`
+	}
+
+	MerchantReply {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+)
+service merchant {
+	@handler getMerchant
+	get /api/merchant/get/:id (MerchantReq) returns (MerchantReply)
+}
