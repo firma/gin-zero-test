@@ -16,4 +16,3 @@
 vendor/
 .idea
 *.iml
-go.sum
