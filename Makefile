@@ -9,5 +9,8 @@ migrate-down:
 	docker run --rm -v ${PWD}/migration:/migration -w /migration migrate/migrate -database="mysql://root:root@tcp(host.docker.internal:3306)/target_db?x-migrations-table=schema_migrations" -path /migration down -all
 
 ########## model ##########
-model-gen:
-	sh script/dao_gen.sh
+model-api-gen:
+	sh ${PWD}/api/script/dao_gen.sh
+
+model-user-rpc-gen:
+	sh ${PWD}/user/script/dao_gen.sh

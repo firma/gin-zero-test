@@ -7,6 +7,7 @@ require (
 	github.com/go-playground/locales v0.14.0
 	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.10.0
+	github.com/google/wire v0.5.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/zeromicro/go-zero v1.3.5
 	google.golang.org/grpc v1.47.0
@@ -14,6 +15,7 @@ require (
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/gen v0.3.12
 	gorm.io/gorm v1.23.7
+	gorm.io/plugin/dbresolver v1.2.1
 	gorm.io/plugin/soft_delete v1.1.0
 )
 
@@ -84,7 +86,6 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/datatypes v1.0.7 // indirect
 	gorm.io/hints v1.1.0 // indirect
-	gorm.io/plugin/dbresolver v1.2.1 // indirect
 	k8s.io/api v0.22.9 // indirect
 	k8s.io/apimachinery v0.22.9 // indirect
 	k8s.io/client-go v0.22.9 // indirect

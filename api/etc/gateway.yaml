@@ -1,13 +1,13 @@
-Name: merchant
+Name: api
 Host: 0.0.0.0
 Port: 8888
-UserRpc:
+UserRpcConf:
   Etcd:
     Hosts:
       - 127.0.0.1:2379
     Key: user.rpc
-UsersRpc:
+TransformConf:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
-    Key: users.rpc
+      - localhost:2379
+    Key: transform.rpc
