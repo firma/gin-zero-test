@@ -7,10 +7,10 @@ import (
 )
 
 type Logic struct {
-	serviceContext *service.ServiceContext
+	serviceContext *service.RpcService
 }
 
-func NewLogic(serviceContext *service.ServiceContext) *Logic {
+func NewLogic(serviceContext *service.RpcService) *Logic {
 	return &Logic{
 		serviceContext: serviceContext,
 	}
