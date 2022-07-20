@@ -21,7 +21,7 @@ var (
 	dbManager DBManager
 )
 
-// 需初始化DB manager
+// SetUpDBManager 需初始化DB manager
 func SetUpDBManager(manager DBManager) {
 	dbManager = manager
 }
