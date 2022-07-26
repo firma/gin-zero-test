@@ -7,15 +7,16 @@ import (
 	"miya/api/internal/rpc"
 	httpresponse "miya/common/basehttp"
 	"miya/common/errorcode"
-	user2 "miya/user/rpc/types/user"
+	user2 "miya/user/user"
 	"net/http"
 )
 
 func TestRpc(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, func() interface{} {
-		user, _ := rpc.NewServiceContext().UserRpc.GetUser(ctx, &user2.IdRequest{
-			Id: "1",
+		user, _ := rpc.NewServiceContext().UserRpc.GetUser(ctx, &user2.GetUserReq{
+			Username: "1",
 		})
+
 		return httpresponse.Success(user)
 	}())
 }
