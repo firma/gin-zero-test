@@ -15,8 +15,9 @@ import (
 )
 
 func main() {
-	router := gin.Default()
 
+	router := gin.Default()
+	CreateApp()
 	//router.GET("/", func(c *gin.Context) {
 	//	time.Sleep(5 * time.Second)
 	//	c.String(http.StatusOK, "Welcome Gin Server")
