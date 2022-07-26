@@ -42,7 +42,6 @@ CREATE TABLE `sys_menu`  (
 DROP TABLE IF EXISTS `sys_org`;
 CREATE TABLE `sys_org`  (
                              `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-    -- `org_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
                              `org_name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '组织名称',
                              `p_org_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '父节点ID',
                              `org_flag` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '组织标记',
@@ -101,10 +100,10 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
-                                   `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-                                   `user_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '用户ID',
-                                   `account_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '账户ID',
-                                   `role_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '角色权限ID',
-                                   INDEX `IDX_USERID`(`user_id`) USING BTREE
+                               `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+                               `user_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '用户ID',
+                               `account_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '账户ID',
+                               `role_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '角色权限ID',
+                               INDEX `IDX_USERID`(`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'SAAS用户权限表' ROW_FORMAT = DYNAMIC;
 
