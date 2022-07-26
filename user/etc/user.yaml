@@ -1,3 +1,4 @@
+Mode: dev
 Name: user.rpc
 ListenOn: 127.0.0.1:8080
 Etcd:
@@ -5,4 +6,4 @@ Etcd:
   - 127.0.0.1:2379
   Key: user.rpc
 DB:
-  DSN: user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
+  DSN: root:root@tcp(127.0.0.1:3306)/local?charset=utf8mb4&parseTime=True&loc=Local

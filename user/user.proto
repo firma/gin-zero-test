@@ -21,6 +21,7 @@ message GetUserReq {
 }
 
 message GetUserResp {
-  string username = 1;
-  string nickname = 2;
+  int64 user_id = 1;
+  string username = 2;
+  string nickname = 3;
 }

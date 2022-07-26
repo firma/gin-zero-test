@@ -13,7 +13,7 @@ fi
 
 dao_gen_container_check=`docker ps -a|grep ${name}|awk '{print $1}'`
 if [ -z "${dao_gen_container_check}" ]; then
-    docker run --network=${network_name} --name ${name} -p 13306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+    docker run --platform linux/x86_64 --network=${network_name} --name ${name} -p 13306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
     echo "create docker container ${name}\nwait for a while...\n"
 
     alive_check=`docker run --rm --network=dao_gen_net mysql:5.7 mysqladmin ping -u root --password=root -h dao_gen -P 3306 --silent|grep alive`
@@ -30,10 +30,10 @@ fi
 
 echo "started ${name} container\n"
 
-docker run --rm --network=${network_name} -v ${PWD}/migration:/migration -w /migration migrate/migrate -database="mysql://root:root@tcp(dao_gen:3306)/dao_gen_db?x-migrations-table=schema_migrations" -path /migration up
+docker run --rm --network=${network_name} -v ${PWD}/api/migration:/migration -w /migration migrate/migrate -database="mysql://root:root@tcp(dao_gen:3306)/dao_gen_db?x-migrations-table=schema_migrations" -path /migration up
 echo "migrated \n"
 
-go run ${PWD}/cmd/modelgen/main.go
+go run ${PWD}/api/cmd/modelgen/main.go
 
 docker stop ${name}
 docker rm ${name}
