@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"errors"
 	"gorm.io/gorm"
 	"miya/api/internal/config"
 	"miya/api/internal/model"
@@ -34,5 +35,6 @@ func (l *UserLogic) Register() (*model.User, error) {
 }
 
 func (l *UserLogic) GetId(id int64) (*model.User, error) {
-
+	//@todo
+	return nil, errors.New("test")
 }
