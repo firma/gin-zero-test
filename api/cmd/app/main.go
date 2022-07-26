@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"miya/api/internal/config"
@@ -26,7 +27,7 @@ func main() {
 	router.Use(middleware.RecoverI)
 	handler.RegisterGatewayRouters(router)
 
-	srv := &http.Server{Addr: ":9090", Handler: router}
+	srv := &http.Server{Addr: fmt.Sprintf(":%v", config.GetAppConfig().Port), Handler: router}
 
 	// Initializing the server in a goroutine so that
 	// it won't block the graceful shutdown handling below
