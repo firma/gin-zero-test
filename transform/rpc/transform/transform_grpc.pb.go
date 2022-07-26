@@ -18,7 +18,7 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// TransformerClient is the client API for Transformer service.
+// TransformerClient is the client API for Transformer rpc.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TransformerClient interface {
@@ -52,7 +52,7 @@ func (c *transformerClient) Shorten(ctx context.Context, in *ShortenReq, opts ..
 	return out, nil
 }
 
-// TransformerServer is the server API for Transformer service.
+// TransformerServer is the server API for Transformer rpc.
 // All implementations must embed UnimplementedTransformerServer
 // for forward compatibility
 type TransformerServer interface {
@@ -73,7 +73,7 @@ func (UnimplementedTransformerServer) Shorten(context.Context, *ShortenReq) (*Sh
 }
 func (UnimplementedTransformerServer) mustEmbedUnimplementedTransformerServer() {}
 
-// UnsafeTransformerServer may be embedded to opt out of forward compatibility for this service.
+// UnsafeTransformerServer may be embedded to opt out of forward compatibility for this rpc.
 // Use of this interface is not recommended, as added methods to TransformerServer will
 // result in compilation errors.
 type UnsafeTransformerServer interface {
@@ -120,7 +120,7 @@ func _Transformer_Shorten_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-// Transformer_ServiceDesc is the grpc.ServiceDesc for Transformer service.
+// Transformer_ServiceDesc is the grpc.ServiceDesc for Transformer rpc.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Transformer_ServiceDesc = grpc.ServiceDesc{

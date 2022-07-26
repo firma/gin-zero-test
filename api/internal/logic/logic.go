@@ -1,47 +1,34 @@
 package logic
 
 import (
-	"miya/api/internal/service"
-	"miya/transform/rpc/transformer"
-	user2 "miya/user/rpc/types/user"
+	"context"
+	"gorm.io/gorm"
+	"miya/api/internal/config"
+	"miya/api/internal/model"
+	"time"
 )
 
-type Logic struct {
-	serviceContext *service.RpcService
+type UserLogic struct {
+	UserDbManager *gorm.DB
+	ctx           context.Context
 }
 
-func NewLogic(serviceContext *service.RpcService) *Logic {
-	return &Logic{
-		serviceContext: serviceContext,
+func NewUserInfoLogic(ctx context.Context) *UserLogic {
+	return &UserLogic{
+		ctx:           ctx,
+		UserDbManager: config.Connection("user"),
 	}
 }
 
-func (l *Logic) GetTest() string {
-	//@todo test
-	user, err := l.serviceContext.UserRpc.GetUser(l.serviceContext.Context, &user2.IdRequest{
-		Id: "1",
-	})
-	if err != nil {
-		return ""
+func (l *UserLogic) UserInfo() (*model.User, error) {
+	// 查询用户是否存在
+	user := model.User{
+		Username:   "test",
+		CreateTime: 0,
+		UpdateTime: 0,
+		ModifyTime: time.Time{},
+		DeleteTime: 0,
 	}
-	return user.Id
-}
-
-func (l *Logic) GetTest2() string {
-	//@todo test
-	tran, err := l.serviceContext.Transformer.Expand(l.serviceContext.Context, &transformer.ExpandReq{Shorten: "f35b2a"})
-	if err != nil {
-		return ""
-	}
-	if len(tran.Url) > 0 {
-		// 代码测试
-		user, err := l.serviceContext.UserRpc.GetUser(l.serviceContext.Context, &user2.IdRequest{
-			Id: "1",
-		})
-		if err != nil {
-			return ""
-		}
-		return tran.Url + user.Id
-	}
-	return tran.Url
+	err := l.UserDbManager.Create(&user).Error
+	return &user, err
 }

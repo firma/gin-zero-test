@@ -1,15 +1,15 @@
 package app
 
 import (
-	"miya/api/internal/service"
+	"miya/api/internal/rpc"
 )
 
 type Application struct {
-	rpcService    *service.RpcService
+	rpcService    *rpc.RpcService
 	isCommandMode bool
 }
 
-func NewApp(rpcService *service.RpcService) (*Application, error) {
+func NewApp(rpcService *rpc.RpcService) (*Application, error) {
 	app := &Application{
 		rpcService: rpcService,
 	}

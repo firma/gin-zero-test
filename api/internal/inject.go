@@ -4,7 +4,7 @@ import (
 	"github.com/google/wire"
 	"miya/api/internal/app"
 	"miya/api/internal/config"
-	"miya/api/internal/service"
+	"miya/api/internal/rpc"
 )
 
-var ProviderSet = wire.NewSet(config.ConfigProvider, app.NewApp, service.NewServiceContext)
+var ProviderSet = wire.NewSet(config.Provider, rpc.NewServiceContext, app.NewApp)
