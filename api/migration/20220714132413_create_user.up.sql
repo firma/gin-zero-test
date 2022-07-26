@@ -11,7 +11,7 @@ CREATE TABLE `sys_dict`  (
                               `out_data` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '外部数据',
                               `p_id`  BIGINT UNSIGNED NOT NULL DEFAULT '0'  COMMENT '父ID',
                               `dict_desc` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字典描述',
-                              `dict_level` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '为空时则是全局字典 否则为某个学校的全局 字典权限',
+                              `dict_level` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '为空时则是全局字典 否则为某个机构的全局 字典权限',
                               `create_time`   BIGINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '创建时间',
                               `update_time`   BIGINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '更新时间',
                               `modify_time`   DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '维护字段-更新时间',
