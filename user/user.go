@@ -3,10 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"miya/user/rpc/internal/config"
-	"miya/user/rpc/internal/server"
-	"miya/user/rpc/internal/svc"
-	"miya/user/rpc/types/user"
+
+	"miya/common/stores/gormx"
+	"miya/user/internal/config"
+	"miya/user/internal/query"
+	"miya/user/internal/server"
+	"miya/user/internal/svc"
+	"miya/user/user"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
@@ -24,6 +27,8 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)
 	svr := server.NewUserServer(ctx)
+
+	query.SetUpDBManager(gormx.MustBuildGormDB(c.DB))
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
 		user.RegisterUserServer(grpcServer, svr)

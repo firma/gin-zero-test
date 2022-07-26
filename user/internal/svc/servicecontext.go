@@ -1,8 +1,6 @@
 package svc
 
-import (
-	"miya/user/rpc/internal/config"
-)
+import "miya/user/internal/config"
 
 type ServiceContext struct {
 	Config config.Config

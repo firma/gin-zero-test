@@ -30,10 +30,10 @@ fi
 
 echo "started ${name} container\n"
 
-docker run --rm --network=${network_name} -v ${PWD}/user/migration:/migration -w /migration migrate/migrate -database="mysql://root:root@tcp(dao_gen:3306)/dao_gen_db?x-migrations-table=schema_migrations" -path /migration up
+docker run --rm --network=${network_name} -v ${PWD}/migration:/migration -w /migration migrate/migrate -database="mysql://root:root@tcp(dao_gen:3306)/dao_gen_db?x-migrations-table=schema_migrations" -path /migration up
 echo "migrated \n"
 
-go run ${PWD}/user/cmd/modelgen/main.go
+go run ${PWD}/cmd/modelgen/main.go
 
 docker stop ${name}
 docker rm ${name}

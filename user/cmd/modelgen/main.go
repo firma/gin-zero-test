@@ -24,7 +24,7 @@ func (m *EmptyModel) IsEmpty() bool {
 
 func main() {
 	g := gen.NewGenerator(gen.Config{
-		OutPath: "./user/rpc/internal/query",
+		OutPath: "./internal/query",
 	})
 
 	db, err := gorm.Open(mysql.Open("root:root@(127.0.0.1:13306)/dao_gen_db?charset=utf8mb4&parseTime=True&loc=Local"))

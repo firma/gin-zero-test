@@ -1,10 +1,11 @@
 package rpc
 
 import (
-	"github.com/gin-gonic/gin"
 	"miya/api/internal/config"
 	"miya/transform/rpc/transformer"
-	"miya/user/rpc/user"
+	"miya/user/user"
+
+	"github.com/gin-gonic/gin"
 )
 
 type RpcService struct {

@@ -2,9 +2,10 @@ package config
 
 import (
 	"fmt"
-	"gorm.io/gorm"
 	"miya/common/db"
 	"sync"
+
+	"gorm.io/gorm"
 )
 
 var (
@@ -20,7 +21,7 @@ func GetDbInstance() {
 		DbLink = make(map[string]string)
 		for key, dbConfig := range databases {
 
-			connection, err := db.GenerateMysqlGormDb(dbConfig)
+			connection, err := db.BuildGormDB(dbConfig)
 			if err == nil {
 				Pools[key] = connection
 			}

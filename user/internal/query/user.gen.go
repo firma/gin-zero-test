@@ -16,7 +16,7 @@ import (
 
 	"gorm.io/plugin/dbresolver"
 
-	"miya/user/rpc/internal/model"
+	"miya/user/internal/model"
 )
 
 func newUser(db *gorm.DB) user {
