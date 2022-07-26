@@ -5,6 +5,7 @@ import (
 	"errors"
 	"github.com/gin-gonic/gin"
 	"log"
+	"miya/api/internal/config"
 	"miya/api/internal/handler"
 	"miya/api/middleware"
 	"net/http"
@@ -17,11 +18,11 @@ import (
 func main() {
 
 	router := gin.Default()
-	CreateApp()
 	//router.GET("/", func(c *gin.Context) {
 	//	time.Sleep(5 * time.Second)
 	//	c.String(http.StatusOK, "Welcome Gin Server")
 	//})
+	config.NewConfig("./etc/api.yaml")
 	router.Use(middleware.RecoverI)
 	handler.RegisterGatewayRouters(router)
 

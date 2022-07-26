@@ -8,14 +8,14 @@ package main
 
 import (
 	"miya/api/internal/app"
-	"miya/api/internal/service"
+	"miya/api/internal/rpc"
 )
 
 // Injectors from wire.go:
 
 // CreateApp init application.
 func CreateApp() (*app.Application, func(), error) {
-	rpcService := service.NewServiceContext()
+	rpcService := rpc.NewServiceContext()
 	application, err := app.NewApp(rpcService)
 	if err != nil {
 		return nil, nil, err
