@@ -20,7 +20,7 @@ func NewUserInfoLogic(ctx context.Context) *UserLogic {
 	}
 }
 
-func (l *UserLogic) UserInfo() (*model.User, error) {
+func (l *UserLogic) Register() (*model.User, error) {
 	// 查询用户是否存在
 	user := model.User{
 		Username:   "test",
@@ -31,4 +31,8 @@ func (l *UserLogic) UserInfo() (*model.User, error) {
 	}
 	err := l.UserDbManager.Create(&user).Error
 	return &user, err
+}
+
+func (l *UserLogic) GetId(id int64) (*model.User, error) {
+
 }

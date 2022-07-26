@@ -28,7 +28,7 @@ func TestConfig(ctx *gin.Context) {
 
 func Testdb(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, func() interface{} {
-		user, err := logic.NewUserInfoLogic(ctx).UserInfo()
+		user, err := logic.NewUserInfoLogic(ctx).Register()
 		if err != nil {
 			return httpresponse.Error(errorcode.HandlerError.SetErrorMsg(err.Error()))
 		}
