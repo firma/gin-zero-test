@@ -21,10 +21,10 @@ func NewUserInfoLogic(ctx context.Context) *UserLogic {
 	}
 }
 
-func (l *UserLogic) Register() (*model.User, error) {
+func (l *UserLogic) Register() (*model.SysUser, error) {
 	// 查询用户是否存在
-	user := model.User{
-		Username:   "test",
+	user := model.SysUser{
+		UserName:   "test",
 		CreateTime: 0,
 		UpdateTime: 0,
 		ModifyTime: time.Time{},
@@ -34,7 +34,7 @@ func (l *UserLogic) Register() (*model.User, error) {
 	return &user, err
 }
 
-func (l *UserLogic) GetId(id int64) (*model.User, error) {
+func (l *UserLogic) GetId(id int64) (*model.SysUser, error) {
 	//@todo
 	return nil, errors.New("test")
 }

@@ -10,25 +10,27 @@ import (
 	"gorm.io/plugin/soft_delete"
 )
 
-const TableNameUser = "user"
+const TableNameSysUserRole = "sys_user_role"
 
-// User mapped from table <user>
-type User struct {
+// SysUserRole mapped from table <sys_user_role>
+type SysUserRole struct {
 	ID         int64                 `gorm:"column:id;primaryKey;autoIncrement:true" json:"id"`    // 自增ID
-	Username   string                `gorm:"column:username;not null" json:"username"`             // 用户名
+	UserID     int64                 `gorm:"column:user_id;not null" json:"user_id"`               // 用户ID
+	AccountID  int64                 `gorm:"column:account_id;not null" json:"account_id"`         // 账户ID
+	RoleID     int64                 `gorm:"column:role_id;not null" json:"role_id"`               // 角色权限ID
 	CreateTime int64                 `gorm:"column:create_time;autoCreateTime" json:"create_time"` // 创建时间
 	UpdateTime int64                 `gorm:"column:update_time;autoUpdateTime" json:"update_time"` // 更新时间
 	ModifyTime time.Time             `gorm:"column:modify_time;autoUpdateTime" json:"modify_time"` // 维护字段-更新时间
 	DeleteTime soft_delete.DeletedAt `gorm:"column:delete_time;not null" json:"delete_time"`       // 删除时间
 }
 
-// TableName User's table name
-func (*User) TableName() string {
-	return TableNameUser
+// TableName SysUserRole's table name
+func (*SysUserRole) TableName() string {
+	return TableNameSysUserRole
 }
 
 // IsEmpty 判断空
-func (m *User) IsEmpty() bool {
+func (m *SysUserRole) IsEmpty() bool {
 	if m == nil {
 		return true
 	}

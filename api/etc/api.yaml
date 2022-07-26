@@ -25,7 +25,7 @@ databases:
     max_idle_conns: 1
     max_open_conns: 10
   system:
-    database: user
+    database: sys
     username: root
     host: 127.0.0.1
     port: 3306
