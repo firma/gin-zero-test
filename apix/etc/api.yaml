@@ -1,0 +1,35 @@
+Name: api
+Host: 0.0.0.0
+Port: 8888
+
+RpcClient:
+  user:
+    Etcd:
+      Hosts:
+        - 127.0.0.1:2379
+      Key: user.rpc
+  transform:
+    Etcd:
+      Hosts:
+        - localhost:2379
+      Key: transform.rpc
+
+databases:
+  user:
+    database: user
+    username: root
+    host: 127.0.0.1
+    port: 3306
+    password: 24383363
+    driver: mysql
+    max_idle_conns: 1
+    max_open_conns: 10
+  system:
+    database: sys
+    username: root
+    host: 127.0.0.1
+    port: 3306
+    password: 24383363
+    driver: mysql
+    max_idle_conns: 1
+    max_open_conns: 10

@@ -39,6 +39,7 @@ func (l *GetUserLogic) GetUser(in *user.GetUserReq) (*user.GetUserResp, error) {
 	}
 
 	return &user.GetUserResp{
+		UserId:   ent.ID,
 		Username: ent.Username,
 		Nickname: ent.Nickname,
 	}, nil
