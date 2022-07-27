@@ -2,7 +2,7 @@ Name: api
 Host: 0.0.0.0
 Port: 18888
 DB:
-  DSN: root:root@tcp(127.0.0.1:3306)/local?charset=utf8mb4&parseTime=True&loc=Local
+  DSN: root:24383363@tcp(127.0.0.1:3306)/user?charset=utf8mb4&parseTime=True&loc=Local
 UserRpc:
   Etcd:
     Hosts:
