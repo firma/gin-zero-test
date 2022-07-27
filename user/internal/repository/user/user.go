@@ -12,6 +12,7 @@ import (
 type (
 	IUserRepo interface {
 		GetByUsername(ctx context.Context, username string) (*model.User, error)
+		Register(ctx context.Context, ua *model.User) (err error)
 	}
 
 	userRepo struct{}
@@ -36,4 +37,9 @@ func (r userRepo) GetByUsername(ctx context.Context, username string) (*model.Us
 	}
 
 	return u, nil
+}
+
+func (r userRepo) Register(ctx context.Context, ua *model.User) (err error) {
+	q := query.Ctx(ctx).User
+	return q.WithContext(ctx).Create(ua)
 }

@@ -14,11 +14,17 @@ message Response {
 service User {
   rpc Ping(Request) returns(Response);
   rpc GetUser(GetUserReq) returns (GetUserResp);
+  rpc RegisterReq(GetUserReq) returns (GetUserResp);
 }
 
 message GetUserReq {
   string username = 1;
 }
+
+message RegisterReq {
+  string username = 1;
+}
+
 
 message GetUserResp {
   int64 user_id = 1;
