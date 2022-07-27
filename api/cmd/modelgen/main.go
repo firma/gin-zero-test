@@ -44,9 +44,21 @@ func main() {
 	opts := []gen.FieldOpt{createTimeOpt, updateTimeOpt, modifyTimeOpt, deleteTimeOpt}
 
 	userActivity := g.GenerateModelAs("c_user_activity", "UserActivity", opts...).AddMethod(isEmptyMethod)
+	sysMenu := g.GenerateModelAs("sys_menu", "SysMenu", opts...).AddMethod(isEmptyMethod)
+	sysOrg := g.GenerateModelAs("sys_org", "SysOrg", opts...).AddMethod(isEmptyMethod)
+	sysRole := g.GenerateModelAs("sys_role", "SysRole", opts...).AddMethod(isEmptyMethod)
+	sysRoleMenu := g.GenerateModelAs("sys_role_menu", "SysRoleMenu", opts...).AddMethod(isEmptyMethod)
+	sysUser := g.GenerateModelAs("sys_user", "SysUser", opts...).AddMethod(isEmptyMethod)
+	sysUserRole := g.GenerateModelAs("sys_user_role", "SysUserRole", opts...).AddMethod(isEmptyMethod)
 
 	g.ApplyBasic(
 		userActivity,
+		sysMenu,
+		sysOrg,
+		sysRole,
+		sysRoleMenu,
+		sysUser,
+		sysUserRole,
 	)
 
 	g.Execute()

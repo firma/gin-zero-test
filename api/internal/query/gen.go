@@ -14,6 +14,12 @@ import (
 func Use(db *gorm.DB) *Query {
 	return &Query{
 		db:           db,
+		SysMenu:      newSysMenu(db),
+		SysOrg:       newSysOrg(db),
+		SysRole:      newSysRole(db),
+		SysRoleMenu:  newSysRoleMenu(db),
+		SysUser:      newSysUser(db),
+		SysUserRole:  newSysUserRole(db),
 		UserActivity: newUserActivity(db),
 	}
 }
@@ -21,6 +27,12 @@ func Use(db *gorm.DB) *Query {
 type Query struct {
 	db *gorm.DB
 
+	SysMenu      sysMenu
+	SysOrg       sysOrg
+	SysRole      sysRole
+	SysRoleMenu  sysRoleMenu
+	SysUser      sysUser
+	SysUserRole  sysUserRole
 	UserActivity userActivity
 }
 
@@ -29,16 +41,34 @@ func (q *Query) Available() bool { return q.db != nil }
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:           db,
+		SysMenu:      q.SysMenu.clone(db),
+		SysOrg:       q.SysOrg.clone(db),
+		SysRole:      q.SysRole.clone(db),
+		SysRoleMenu:  q.SysRoleMenu.clone(db),
+		SysUser:      q.SysUser.clone(db),
+		SysUserRole:  q.SysUserRole.clone(db),
 		UserActivity: q.UserActivity.clone(db),
 	}
 }
 
 type queryCtx struct {
+	SysMenu      *sysMenuDo
+	SysOrg       *sysOrgDo
+	SysRole      *sysRoleDo
+	SysRoleMenu  *sysRoleMenuDo
+	SysUser      *sysUserDo
+	SysUserRole  *sysUserRoleDo
 	UserActivity *userActivityDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
+		SysMenu:      q.SysMenu.WithContext(ctx),
+		SysOrg:       q.SysOrg.WithContext(ctx),
+		SysRole:      q.SysRole.WithContext(ctx),
+		SysRoleMenu:  q.SysRoleMenu.WithContext(ctx),
+		SysUser:      q.SysUser.WithContext(ctx),
+		SysUserRole:  q.SysUserRole.WithContext(ctx),
 		UserActivity: q.UserActivity.WithContext(ctx),
 	}
 }
