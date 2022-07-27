@@ -16,7 +16,7 @@ import (
 
 	"gorm.io/plugin/dbresolver"
 
-	"miya/api/internal/model"
+	"miya/apix/internal/model"
 )
 
 func newSysRoleMenu(db *gorm.DB) sysRoleMenu {

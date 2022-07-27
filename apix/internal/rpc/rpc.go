@@ -1,7 +1,7 @@
 package rpc
 
 import (
-	"miya/api/internal/config"
+	"miya/apix/internal/config"
 	"miya/transform/rpc/transformer"
 	"miya/user/user"
 

@@ -2,9 +2,9 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	config2 "miya/api/internal/config"
-	"miya/api/internal/logic"
-	"miya/api/internal/rpc"
+	config2 "miya/apix/internal/config"
+	"miya/apix/internal/logic"
+	"miya/apix/internal/rpc"
 	httpresponse "miya/common/basehttp"
 	"miya/common/errorcode"
 	user2 "miya/user/user"

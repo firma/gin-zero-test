@@ -4,8 +4,8 @@ package main
 
 import (
 	"github.com/google/wire"
-	"miya/api/internal"
-	"miya/api/internal/app"
+	"miya/apix/internal"
+	"miya/apix/internal/app"
 )
 
 // CreateApp init application.

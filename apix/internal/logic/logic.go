@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 	"gorm.io/gorm"
-	"miya/api/internal/config"
-	"miya/api/internal/model"
+	"miya/apix/internal/config"
+	"miya/apix/internal/model"
 	"time"
 )
 

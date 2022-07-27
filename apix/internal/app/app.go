@@ -1,7 +1,7 @@
 package app
 
 import (
-	"miya/api/internal/rpc"
+	"miya/apix/internal/rpc"
 )
 
 type Application struct {

@@ -7,8 +7,8 @@
 package main
 
 import (
-	"miya/api/internal/app"
-	"miya/api/internal/rpc"
+	"miya/apix/internal/app"
+	"miya/apix/internal/rpc"
 )
 
 // Injectors from wire.go:
