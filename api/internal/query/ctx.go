@@ -43,6 +43,14 @@ func Ctx(ctx context.Context) *Query {
 
 	return Use(db)
 }
+func CasBin(ctx context.Context) *gorm.DB {
+	db, err := dbManager.GetDB(ctx)
+	if err != nil {
+		log.Panicf("获取DB client err: %s", err)
+	}
+
+	return db
+}
 
 func Transaction(ctx context.Context, fn func(txCtx context.Context) error) error {
 	if dbManager == nil {

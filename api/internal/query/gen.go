@@ -14,6 +14,7 @@ import (
 func Use(db *gorm.DB) *Query {
 	return &Query{
 		db:           db,
+		CasbinRule:   newCasbinRule(db),
 		SysMenu:      newSysMenu(db),
 		SysOrg:       newSysOrg(db),
 		SysRole:      newSysRole(db),
@@ -27,6 +28,7 @@ func Use(db *gorm.DB) *Query {
 type Query struct {
 	db *gorm.DB
 
+	CasbinRule   casbinRule
 	SysMenu      sysMenu
 	SysOrg       sysOrg
 	SysRole      sysRole
@@ -41,6 +43,7 @@ func (q *Query) Available() bool { return q.db != nil }
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:           db,
+		CasbinRule:   q.CasbinRule.clone(db),
 		SysMenu:      q.SysMenu.clone(db),
 		SysOrg:       q.SysOrg.clone(db),
 		SysRole:      q.SysRole.clone(db),
@@ -52,6 +55,7 @@ func (q *Query) clone(db *gorm.DB) *Query {
 }
 
 type queryCtx struct {
+	CasbinRule   *casbinRuleDo
 	SysMenu      *sysMenuDo
 	SysOrg       *sysOrgDo
 	SysRole      *sysRoleDo
@@ -63,6 +67,7 @@ type queryCtx struct {
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
+		CasbinRule:   q.CasbinRule.WithContext(ctx),
 		SysMenu:      q.SysMenu.WithContext(ctx),
 		SysOrg:       q.SysOrg.WithContext(ctx),
 		SysRole:      q.SysRole.WithContext(ctx),

@@ -1,6 +1,8 @@
 package user
 
-import "miya/api/internal/logic/user"
+import (
+	"miya/api/internal/logic/user"
+)
 
 type Handler struct {
 	userLogic user.IUserLogic

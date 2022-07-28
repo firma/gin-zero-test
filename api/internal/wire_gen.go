@@ -10,11 +10,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"miya/api/internal/handler"
+	system3 "miya/api/internal/handler/system"
 	user2 "miya/api/internal/handler/user"
 	"miya/api/internal/logic"
+	system2 "miya/api/internal/logic/system"
 	"miya/api/internal/logic/user"
 	"miya/api/internal/middleware"
 	"miya/api/internal/repository"
+	"miya/api/internal/repository/system"
 	"miya/api/internal/repository/useractivity"
 	"miya/api/internal/routes"
 )
@@ -25,8 +28,12 @@ func Build() Entry {
 	iUserActivityRepo := useractivity.NewUserActivityRepo()
 	iUserLogic := user.NewUserLogic(iUserActivityRepo)
 	userHandler := user2.NewHandler(iUserLogic)
+	iCasBinRepo := system.NewCasBinRepo()
+	iSystemLogic := system2.NewSystemLogic(iCasBinRepo)
+	systemHandler := system3.NewHandler(iSystemLogic)
 	handlers := handler.Handlers{
-		User: userHandler,
+		User:   userHandler,
+		System: systemHandler,
 	}
 	authMiddleware := middleware.NewAuthMiddleware()
 	middlewares := middleware.Middlewares{
