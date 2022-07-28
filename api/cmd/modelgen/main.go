@@ -50,6 +50,7 @@ func main() {
 	sysRoleMenu := g.GenerateModelAs("sys_role_menu", "SysRoleMenu", opts...).AddMethod(isEmptyMethod)
 	sysUser := g.GenerateModelAs("sys_user", "SysUser", opts...).AddMethod(isEmptyMethod)
 	sysUserRole := g.GenerateModelAs("sys_user_role", "SysUserRole", opts...).AddMethod(isEmptyMethod)
+	casBinRule := g.GenerateModelAs("casbin_rule", "CasbinRule").AddMethod(isEmptyMethod)
 
 	g.ApplyBasic(
 		userActivity,
@@ -59,6 +60,7 @@ func main() {
 		sysRoleMenu,
 		sysUser,
 		sysUserRole,
+		casBinRule,
 	)
 
 	g.Execute()

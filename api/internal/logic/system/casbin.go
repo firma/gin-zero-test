@@ -10,7 +10,6 @@ import (
 
 func (s SystemLogic) EnforcerTool(ctx context.Context) *casbin.Enforcer {
 	//TODO implement me
-	//adapter := gormadapter.NewAdapterByDB(s.UserActivityRepo.)
 	db := s.CasBinRepo.GetDb(ctx)
 	a, err := gormadapter.NewAdapterByDBWithCustomTable(db, &model.CasbinRule{})
 	fmt.Println("NewAdapterByDBWithCustomTable", err)
