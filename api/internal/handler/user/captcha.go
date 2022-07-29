@@ -2,6 +2,7 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
+	util "miya/common/utils"
 )
 
 type CaptchaReq struct {
@@ -9,5 +10,6 @@ type CaptchaReq struct {
 }
 
 func (h Handler) Captcha(ctx *gin.Context) {
-	ctx.Data(200, "image/png", []byte("1234"))
+	b := util.ImgText(100, 50, "1231")
+	ctx.Data(200, "image/png", b)
 }
