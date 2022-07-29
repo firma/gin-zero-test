@@ -11,7 +11,7 @@ import (
 func RegisterRoutes(r *gin.Engine, middlewares middleware.Middlewares, handlers handler.Handlers) {
 	rg := r.Group("")
 
-	user.RegisterUser(rg.Group("user"), middlewares, handlers)
+	user.RegisterUser(rg.Group("api/user"), middlewares, handlers)
 
-	system.RegisterSystem(rg.Group("system"), middlewares, handlers)
+	system.RegisterSystem(rg.Group("api/system"), middlewares, handlers)
 }

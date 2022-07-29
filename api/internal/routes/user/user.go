@@ -9,7 +9,9 @@ import (
 )
 
 func RegisterUser(r *gin.RouterGroup, middlewares middleware.Middlewares, handlers handler.Handlers) {
+
 	r.GET("", httpx.Json(handlers.User.GetUser)).
 		POST("login", httpx.Json(handlers.User.Login)).
-		GET("testrpc", httpx.Json(handlers.User.TestRpc))
+		GET("testrpc", httpx.Json(handlers.User.TestRpc)).
+		GET("login/captcha", handlers.User.Captcha)
 }
