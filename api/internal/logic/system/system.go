@@ -9,6 +9,7 @@ import (
 type (
 	ISystemLogic interface {
 		EnforcerTool(ctx context.Context) *casbin.Enforcer
+		Enforce(ctx context.Context, admin, platform, path, method string) bool
 	}
 	SystemLogic struct {
 		CasBinRepo system.ICasBinRepo

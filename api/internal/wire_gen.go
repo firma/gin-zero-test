@@ -35,7 +35,7 @@ func Build() Entry {
 		User:   userHandler,
 		System: systemHandler,
 	}
-	authMiddleware := middleware.NewAuthMiddleware()
+	authMiddleware := middleware.NewAuthMiddleware(iSystemLogic)
 	middlewares := middleware.Middlewares{
 		Auth: authMiddleware,
 	}

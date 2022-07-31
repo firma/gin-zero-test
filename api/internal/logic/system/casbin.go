@@ -19,13 +19,28 @@ func (s SystemLogic) EnforcerTool(ctx context.Context) *casbin.Enforcer {
 	err = e.LoadPolicy()
 	fmt.Println("LoadPolicy", err)
 	// Check the permission.
-	//e.AddPolicy("admin", "domain", "data1", "read")
+	e.AddPolicy("admin", "operation", "/api/user/login", "read")
+	e.AddPolicy("admin", "operation", "/api/user/testrpc", "read")
 	// e.RemovePolicy("admin", "domain", "data1", "read")
 	m, h := e.Enforce("admin", "domain", "data1", "read")
 	fmt.Println("Enforce", m, h)
 	save := e.SavePolicy()
 	fmt.Println("SavePolicy", save)
 	return e
+}
+
+func (s SystemLogic) Enforce(ctx context.Context, admin, platform, path, method string) bool {
+	//TODO implement me
+	db := s.CasBinRepo.GetDb(ctx)
+	a, err := gormadapter.NewAdapterByDBWithCustomTable(db, &model.CasbinRule{})
+	fmt.Println("NewAdapterByDBWithCustomTable", err)
+
+	e, err := casbin.NewEnforcer("etc/casbin.conf", a)
+	err = e.LoadPolicy()
+
+	m, h := e.Enforce(admin, platform, path, method)
+	fmt.Println("Enforce", m, h)
+	return m
 }
 
 //LoadPolicy()	强制的	从存储中加载所有策略规则
